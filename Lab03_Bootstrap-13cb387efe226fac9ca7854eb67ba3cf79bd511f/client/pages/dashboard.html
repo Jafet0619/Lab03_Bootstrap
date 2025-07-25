@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard de Inventario</title>
+  <link rel="stylesheet" href="../src/styles/dashboard.css" />
+</head>
+<body>
+  <header class="d-flex flex-column align-items-center position-relative" style="margin-bottom:2rem;">
+    <h1 style="color:#232946;font-weight:800;letter-spacing:1px;">Dashboard de Inventario</h1>
+    <a href="/tienda.html" class="btn btn-outline-primary d-flex align-items-center justify-content-center" style="border-radius:12px; font-weight:600; font-size:1.1rem; padding:12px 32px; box-shadow:0 4px 16px 0 rgba(35,41,70,0.10); gap:10px; margin-top:1.5rem; border-width:2.5px; background:rgba(238,187,195,0.08);">
+      <svg class="bi me-1" width="24" height="24" aria-hidden="true" style="fill:#eebbc3;"><use xlink:href="#chevron-left"></use></svg>
+      <span style="font-size:1.13em;letter-spacing:1px;">Volver a la tienda</span>
+    </a>
+  </header>
+  <main>
+    <table id="inventario-table" class="table table-hover table-bordered shadow-sm rounded-4" style="background:#fff;">
+      <thead style="background:linear-gradient(90deg,#232946 60%,#eebbc3 100%);color:#fff;letter-spacing:1px;font-size:1.08em;">
+        <tr>
+          <th>ID</th>
+          <th>Producto</th>
+          <th>Descripción</th>
+          <th>Precio</th>
+          <th>Stock Actual</th>
+          <th>Total Vendido</th>
+          <th>Categorías</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="7">Cargando datos...</td></tr>
+      </tbody>
+    </table>
+    <section id="ventas-admin-section" style="margin-top:10px;">
+      <h2 style="color:#232946;font-weight:700;letter-spacing:1px;">Ventas del Sistema</h2>
+      <div class="mb-3 d-flex align-items-center gap-2" style="flex-wrap:wrap;">
+        <label for="filtro-usuario" style="font-weight:600;color:#232946;">Filtrar por usuario:</label>
+        <select id="filtro-usuario" class="form-select" style="max-width:350px;display:inline-block;border-radius:12px;border:2px solid #eebbc3;font-weight:600;">
+          <option value="">Todos los usuarios</option>
+        </select>
+      </div>
+      <div id="ventas-admin-container" class="card p-4 shadow-lg rounded-4 border-0" style="background:#fff; min-height:120px;"></div>
+    </section>
+  </main>
+  <script src="../scripts/dashboard.js"></script>
+</body>
+</html>

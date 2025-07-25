@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | DevMart</title>
+    <link rel="stylesheet" href="../src/styles/sesion.css">
+    <!-- Bootstrap CSS (opcional si ya lo tienes en tu proyecto) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="login-title text-center mb-1">Bienvenido a DevMart</h2>
+        <div class="login-subtitle text-center mb-4">Inicia sesión o crea tu cuenta para acceder a lo mejor en tecnología</div>
+        
+        <!-- Formulario de inicio de sesión -->
+        <form id="form-login">
+            <div class="mb-3">
+                <label for="login-email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="login-email" required>
+            </div>
+            <div class="mb-3">
+                <label for="login-password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="login-password" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-2">Iniciar sesión</button>
+            <div class="text-center">
+                <span class="toggle-link" id="show-register">¿No tienes cuenta? Regístrate</span>
+            </div>
+        </form>
+        
+        <!-- Formulario de registro -->
+        <form id="form-register" style="display:none;">
+            <div class="mb-3">
+                <label for="register-name" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="register-name" required>
+            </div>
+            <div class="mb-3">
+                <label for="register-lastname" class="form-label">Apellido</label>
+                <input type="text" class="form-control" id="register-lastname" required>
+            </div>
+            <div class="mb-3">
+                <label for="register-email" class="form-label">Correo electrónico</label>
+                <input type="email" class="form-control" id="register-email" required>
+            </div>
+            <div class="mb-3">
+                <label for="register-password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="register-password" required>
+            </div>
+            <div class="mb-3">
+                <label for="register-address" class="form-label">Dirección</label>
+                <input type="text" class="form-control" id="register-address">
+            </div>
+            <div class="mb-3">
+                <label for="register-phone" class="form-label">Teléfono</label>
+                <input type="number" class="form-control" id="register-phone">
+            </div>
+            <button type="submit" class="btn btn-primary w-100 mb-2">Crear cuenta</button>
+            <div class="text-center">
+                <span class="toggle-link" id="show-login">¿Ya tienes cuenta? Inicia sesión</span>
+            </div>
+        </form>
+
+    </div>
+    <script src="../scripts/sesion.js"></script>
+</body>
+</html>

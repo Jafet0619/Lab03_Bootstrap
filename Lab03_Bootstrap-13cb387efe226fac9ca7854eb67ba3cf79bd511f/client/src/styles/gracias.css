@@ -1,0 +1,52 @@
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    color: #232946;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.contenedor {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(35,41,70,0.12);
+    text-align: center;
+}
+
+.mensaje h1 {
+    color: #232946;
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.mensaje p {
+    color: #393e46;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-volver {
+    display: inline-block;
+    background: linear-gradient(90deg, #eebbc3 0%, #b8c1ec 100%);
+    color: #232946;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(35,41,70,0.10);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-volver:hover,
+.btn-volver:focus {
+    background: linear-gradient(90deg, #232946 0%, #eebbc3 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(35,41,70,0.18);
+}

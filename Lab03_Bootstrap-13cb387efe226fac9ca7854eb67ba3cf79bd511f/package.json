@@ -1,0 +1,7 @@
+{
+  "name": "tienda-virtual",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "cd node-backend && node server.js"
+  }
+}

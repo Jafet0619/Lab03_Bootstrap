@@ -1,0 +1,508 @@
+/* Centrar y expandir las tarjetas en el main */
+
+/* Fondo general */
+body {
+    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    color: #222;
+}
+
+/* Navbar */
+.navbar {
+    background: #232946 !important;
+    border-bottom: 2px solid #eebbc3 !important;
+    border-radius: 18px !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 2rem auto 2rem auto !important;
+    box-sizing: border-box !important;
+    z-index: 1000 !important;
+    padding-top: 0.1rem !important;
+    padding-bottom: 0.1rem !important;
+    min-height: 40px !important;
+    height: auto !important;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Asegura el centrado vertical */
+}
+
+.navbar .container-fluid {
+    margin: 0 auto !important;
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Centra los elementos del navbar en pantallas grandes */
+@media (min-width: 992px) {
+    .navbar .navbar-nav {
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #eebbc3 !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.navbar .nav-link:hover {
+    color: #fff !important;
+}
+
+/* Hero principal */
+.position-relative.bg-body-tertiary {
+    background: linear-gradient(135deg, #eebbc3 0%, #b8c1ec 100%);
+    max-width: 1200px;
+    width: 95% !important;
+    margin: 2rem auto 2rem auto !important;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(35,41,70,0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.display-3.fw-bold {
+    color: #232946;
+    text-shadow: 0 2px 8px #eebbc340;
+}
+
+.fw-normal.text-muted {
+    color: #23294699 !important;
+}
+
+.icon-link {
+    color: #232946;
+    border-bottom: 2px solid #eebbc3;
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.icon-link:hover {
+    /* color: #eebbc3; */
+    border-color: #232946;
+    text-decoration: none;
+}
+
+/* Grid para las tarjetas de productos */
+.productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    align-items: stretch;
+}
+
+.productos-grid > div {
+    background: #ffffff !important;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px 0 rgba(35,41,70,0.08);
+    padding: 2.5rem 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+    /* Para que todas tengan la misma altura */
+}
+
+.productos-grid > div:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px 0 rgba(35,41,70,0.18);
+    z-index: 2;
+}
+
+/* Hace que el contenido interno (texto, imagen) se distribuya y no estire la tarjeta */
+.productos-grid > div > .my-3,
+.productos-grid > div > .my-3.py-3,
+.productos-grid > div > .my-3.p-3 {
+    flex: 1 1 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/* Títulos y subtítulos de tarjetas */
+.display-5 {
+    color: #232946;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.lead {
+    color: #393e46;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Simulación de imagen en la tarjeta */
+.bg-body-tertiary,
+.bg-dark,
+.bg-body,
+.text-bg-dark,
+.text-bg-primary {
+    border-radius: 16px !important;
+    margin-bottom: 1rem;
+    min-height: 260px;
+    width: 90% !important;
+    background: linear-gradient(135deg, #eebbc3 0%, #b8c1ec 100%);
+    box-shadow: 0 2px 12px 0 rgba(35,41,70,0.10);
+}
+
+/* Footer */
+footer.container {
+    background: #232946;
+    border-radius: 18px 18px 0 0;
+    color: #eebbc3;
+    margin-top: 3rem;
+    box-shadow: 0 -2px 16px 0 rgba(35,41,70,0.10);
+}
+
+footer h5 {
+    color: #eebbc3;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+footer a {
+    color: #b8c1ec;
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+footer small {
+    color: #b8c1ec;
+}
+
+/* Botón de agregar al carrito */
+.btn-primary {
+    background: linear-gradient(90deg, #232946 60%, #eebbc3 100%);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px 0 rgba(35,41,70,0.10);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: linear-gradient(90deg, #eebbc3 0%, #232946 100%);
+    color: #232946;
+    box-shadow: 0 4px 16px 0 rgba(35,41,70,0.18);
+    border: none;
+    outline: none;
+}
+
+/* Botón de agregar al carrito más angosto y centrado */
+.productos-grid .btn-primary {
+    width: 60% !important;
+    margin: 1.5rem auto 0 auto;
+    display: block;
+}
+
+/* Estilo para el botón de inicio de sesión en el navbar */
+.btn-outline-primary {
+    border: 2px solid #eebbc3 !important;
+    color: #eebbc3 !important;
+    background: transparent !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    box-shadow: 0 2px 8px 0 rgba(35,41,70,0.08);
+    display: flex;
+    align-items: center;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    background: linear-gradient(90deg, #eebbc3 0%, #b8c1ec 100%) !important;
+    color: #232946 !important;
+    border-color: #232946 !important;
+    box-shadow: 0 4px 16px 0 rgba(35,41,70,0.15);
+    text-decoration: none;
+    outline: none;
+}
+
+/* Carrito lateral */
+.carrito-panel {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 350px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -4px 0 24px 0 rgba(35,41,70,0.12);
+    z-index: 2000;
+    padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+    transition: right 0.3s cubic-bezier(.4,2,.6,1);
+    display: flex;
+    flex-direction: column;
+}
+.carrito-panel.abierto {
+    right: 0;
+}
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+#carrito-lista {
+    flex: 1 1 auto;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem 0;
+    overflow-y: auto;
+    max-height: 55vh;
+}
+#carrito-lista li {
+    margin-bottom: 0.7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    border-bottom: 1px solid #eebbc3;
+    padding-bottom: 0.3rem;
+}
+#carrito-total {
+    font-weight: bold;
+    color: #232946;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+#carrito-limpiar {
+    margin-top: 0.5rem;
+}
+
+/* Botón "Ir a pagar" en el carrito lateral */
+#carrito-pagar {
+    background: linear-gradient(90deg, #eebbc3 0%, #b8c1ec 100%);
+    color: #232946;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px 0 rgba(35,41,70,0.10);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    display: block;
+    text-decoration: none;
+}
+
+#carrito-pagar:hover, #carrito-pagar:focus {
+    background: linear-gradient(90deg, #232946 0%, #eebbc3 100%);
+    color: #fff;
+    box-shadow: 0 4px 16px 0 rgba(35,41,70,0.18);
+    text-decoration: none;
+    outline: none;
+}
+
+/* Botón "Limpiar carrito" en el carrito lateral */
+#carrito-limpiar {
+    background: transparent;
+    color: #eebbc3;
+    border: 2px solid #eebbc3;
+    border-radius: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px 0 rgba(35,41,70,0.08);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    margin-bottom: 0.5rem;
+}
+
+#carrito-limpiar:hover,
+#carrito-limpiar:focus {
+    background: #eebbc3;
+    color: #232946;
+    border-color: #232946;
+    outline: none;
+}
+
+/* Botón "Eliminar" en el carrito lateral */
+#carrito-lista .btn-outline-danger {
+    border: 1.5px solid #eebbc3;
+    color: #eebbc3;
+    background: transparent;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 2px 10px;
+    margin-left: 8px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+#carrito-lista .btn-outline-danger:hover,
+#carrito-lista .btn-outline-danger:focus {
+    background: #eebbc3;
+    color: #232946;
+    border-color: #232946;
+    outline: none;
+}
+
+@media (max-width: 500px) {
+    .carrito-panel {
+        width: 100vw;
+        right: -100vw;
+        padding: 1rem 0.5rem;
+    }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    .d-md-flex.flex-md-equal {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .d-md-flex.flex-md-equal > div {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+    .position-relative.bg-body-tertiary {
+        margin: 1rem 0;
+        padding: 1rem;
+    }
+    footer.container {
+        border-radius: 0;
+        margin-top: 1.5rem;
+    }
+}
+
+/* --- MEJORA VISUAL DE TARJETAS DE PRODUCTOS --- */
+.card.h-100.shadow-sm {
+    border-radius: 20px;
+    box-shadow: 0 4px 24px 0 rgba(35,41,70,0.10);
+    border: none;
+    transition: transform 0.18s, box-shadow 0.18s;
+    background: #fff;
+    overflow: hidden;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card.h-100.shadow-sm:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px 0 rgba(35,41,70,0.18);
+    z-index: 2;
+}
+
+.card-img-top {
+    background: linear-gradient(135deg, #eebbc3 0%, #b8c1ec 100%);
+    border-radius: 20px 20px 0 0;
+    object-fit: contain;
+    width: 100%;
+    min-height: 180px;
+    max-height: 200px;
+    margin-bottom: 0;
+    padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.card-title {
+    color: #232946;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    color: #393e46;
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+}
+
+.precio {
+    color: #5a4fcf; /* Un violeta más oscuro y legible */
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px #eebbc355;
+}
+
+.card .btn-primary {
+    width: 80%;
+    margin: 0 auto 0.5rem auto;
+    font-size: 1.05rem;
+    padding: 0.6rem 0;
+    border-radius: 10px;
+}
+
+/* Responsive para tarjetas */
+@media (max-width: 991px) {
+    .card.h-100.shadow-sm {
+        min-height: 380px;
+    }
+    .card-img-top {
+        min-height: 140px;
+        max-height: 160px;
+        padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar {
+        border-radius: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    .card.h-100.shadow-sm {
+        min-height: 320px;
+    }
+    .card-img-top {
+        min-height: 100px;
+        max-height: 120px;
+        padding: 0.8rem 0.5rem 0.5rem 0.5rem;
+    }
+
+    body{
+        padding: 5%;
+    }
+}
+
+/* Centrado perfecto del header hero */
+.header-hero {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #eebbc3 0%, #b8c1ec 100%);
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 4px 24px 0 rgba(35,41,70,0.04);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.header-hero .container {
+    max-width: 700px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+@media (max-width: 767px) {
+    .header-hero .container {
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
