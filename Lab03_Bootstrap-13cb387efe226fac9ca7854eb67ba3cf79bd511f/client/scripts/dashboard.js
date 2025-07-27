@@ -93,6 +93,7 @@
 
 document.addEventListener('DOMContentLoaded', async () => {
   const tbody = document.querySelector('#inventario-table tbody');
+  const btnRecalcularStock = document.getElementById('btn-recalcular-stock');
   const loadingHTML = `
     <tr>
       <td colspan="7" class="loading">
@@ -110,7 +111,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     showLoading();
     
     try {
-      const response = await fetch('http://127.0.0.1:3000/api/inventario');
+      // Usar el nuevo endpoint para obtener stock real
+      const response = await fetch('http://127.0.0.1:3000/api/inventario/stock-real');
       
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
@@ -139,23 +141,30 @@ document.addEventListener('DOMContentLoaded', async () => {
       return;
     }
 
-    tbody.innerHTML = products.map(product => `
-      <tr>
-        <td>${product.producto_id}</td>
-        <td>
-          <img src="${product.imagen_url ? '/client/src' + product.imagen_url : '/client/src/assets/img/default-product.png'}" 
-               alt="${product.nombre}" 
-               class="product-img"
-               onerror="this.onerror=null;this.src='/assets/img/default-product.png'">
-          ${product.nombre}
-        </td>
-        <td>${product.descripcion || 'Sin descripción'}</td>
-        <td>$${product.precio}</td>
-        <td class="${getStockClass(product.stock)}">${product.stock}</td>
-        <td>${product.total_vendido || 0}</td>
-        <td>${product.categoria || 'General'}</td>
-      </tr>
-    `).join('');
+    tbody.innerHTML = products.map(product => {
+      const stockReal = product.stock_real || product.stock;
+      const cantidadVendida = product.cantidad_vendida || 0;
+      
+      return `
+        <tr>
+          <td>${product.producto_id}</td>
+          <td>
+            <img src="${product.imagen_url ? '/client/src' + product.imagen_url : '/client/src/assets/img/default-product.png'}" 
+                 alt="${product.nombre}" 
+                 class="product-img"
+                 onerror="this.onerror=null;this.src='/assets/img/default-product.png'">
+            ${product.nombre}
+          </td>
+          <td>${product.descripcion || 'Sin descripción'}</td>
+          <td>$${product.precio}</td>
+          <td class="${getStockClass(stockReal)}">
+            <span style="font-weight: 700; color: #232946;">${stockReal}</span>
+          </td>
+          <td>${cantidadVendida}</td>
+          <td>${product.categoria || 'General'}</td>
+        </tr>
+      `;
+    }).join('');
   };
 
   const getStockClass = (stock) => {
@@ -183,6 +192,93 @@ document.addEventListener('DOMContentLoaded', async () => {
       </tr>
     `;
   };
+
+  // Función para recalcular stock
+  const recalcularStock = async () => {
+    if (btnRecalcularStock.disabled) return;
+    
+    btnRecalcularStock.disabled = true;
+    const originalText = btnRecalcularStock.innerHTML;
+    btnRecalcularStock.innerHTML = `
+      <svg class="bi me-2" width="20" height="20" aria-hidden="true" style="animation: spin 1s linear infinite;">
+        <use xlink:href="#arrow-clockwise"></use>
+      </svg>
+      <span>Recalculando...</span>
+    `;
+    
+    try {
+      const response = await fetch('http://127.0.0.1:3000/api/inventario/recalcular-stock', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      
+      if (!response.ok) {
+        throw new Error('Error al recalcular stock');
+      }
+      
+      const result = await response.json();
+      
+      // Mostrar mensaje de éxito
+      showSuccessMessage('Stock recalculado correctamente');
+      
+      // Recargar el inventario
+      await loadInventory();
+      
+    } catch (error) {
+      console.error('Error al recalcular stock:', error);
+      showErrorMessage('Error al recalcular el stock');
+    } finally {
+      btnRecalcularStock.disabled = false;
+      btnRecalcularStock.innerHTML = originalText;
+    }
+  };
+
+  // Función para mostrar mensaje de éxito
+  const showSuccessMessage = (message) => {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-success position-fixed';
+    alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);';
+    alertDiv.innerHTML = `
+      <div class="d-flex align-items-center">
+        <svg class="bi me-2" width="20" height="20" fill="currentColor">
+          <use xlink:href="#check-circle"></use>
+        </svg>
+        <span>${message}</span>
+      </div>
+    `;
+    document.body.appendChild(alertDiv);
+    
+    setTimeout(() => {
+      alertDiv.remove();
+    }, 3000);
+  };
+
+  // Función para mostrar mensaje de error
+  const showErrorMessage = (message) => {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = 'alert alert-danger position-fixed';
+    alertDiv.style.cssText = 'top: 20px; right: 20px; z-index: 9999; min-width: 300px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);';
+    alertDiv.innerHTML = `
+      <div class="d-flex align-items-center">
+        <svg class="bi me-2" width="20" height="20" fill="currentColor">
+          <use xlink:href="#exclamation-triangle"></use>
+        </svg>
+        <span>${message}</span>
+      </div>
+    `;
+    document.body.appendChild(alertDiv);
+    
+    setTimeout(() => {
+      alertDiv.remove();
+    }, 3000);
+  };
+
+  // Event listener para el botón de recalcular stock
+  if (btnRecalcularStock) {
+    btnRecalcularStock.addEventListener('click', recalcularStock);
+  }
 
   // Carga inicial
   loadInventory();
